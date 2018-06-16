@@ -1,4 +1,6 @@
 <%= javascript_include_tag 'rails_admin_charts/application' %>
-<div id="growth_rate" style="min-width: 400px; height: 400px;">
-    <%=raw render 'chart' %>
-</div>
+<% @abstract_model.model.charts_count.times do |i| %>
+  <div id='growth_rate_#{<%= i %>}' style="min-width: 400px; height: 400px;">
+    <%=raw render 'chart', locals: {chart: i} %>
+  </div>
+<% end %>
